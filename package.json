@@ -1,0 +1,22 @@
+{
+  "name": "application",
+  "version": "1.0.0",
+  "description": "application for bachelor thesis",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-fileupload": "*",
+    "fs": "0.0.1-security",
+    "mongoose": "*",
+    "node-rest-client": "^3.1.0",
+    "popups": "^1.1.3",
+    "restler": "^3.4.0"
+  },
+  "author": "Winda Anggraeni",
+  "license": "ISC"
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	    <title>3D Printer</title>
+	        <meta charset="utf-8"/>
+	  
+	      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+	        <link href='https://fonts.googleapis.com/css?family=Pacifico:300,400,700' rel='stylesheet' type='text/css'>
+	        <link rel="stylesheet" type="text/css" href="/css/submit.css">
+	        <link rel="icon" type="image/png" href="images/fav.png">
+	</head>
+
+	<body>
+	    <header class="container">
+	  	     <div class="row">
+	  	     	<div class="col-sm-8">
+	  	     		<h1 class="col-sm-8">3D Printer</h1>
+	  	     	</div>
+	            	
+	            <div class="col-sm-8 text-right">
+	            	<nav>
+	                	<form action="help" method="get">
+      						<input type="submit" id="navHelp" value="Help"></input>
+      					</form>
+	                </nav>
+	            </div>
+	                
+	         </div>
+	 	</header>
+	
+  	<section class="jumbotron">
+      	<div class="container">
+          <div class="row">
+          	<div class="col-sm-4">
+          		<form action="/upload" method="post" enctype="multipart/form-data">
+  					<input type="file" name="filename">
+ 					<input type="submit" id="submitButton" value="Submit">
+				</form>
+          	</div>
+          </div>
+        </div>
+ 	</section>
+
+ 	<!-- 
+ 	<script type="text/javascript">
+ 			const data = document.getElementById('pushData');
+			data.addEventListener('submit', (e) => {
+			e.preventDefault()
+			const formData = new formData(data)
+			fetch('192.168.137.20/api/files/local', {
+			method: 'POST',
+			body: formData,
+			headers: {
+				'x-api-key' : '4E2F97268A004C30BFC84FD9D9070C47'
+			}
+		})
+	})
+ 	</script>
+ 	-->
+	
+	</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	    <title>3D Printer</title>
+	        <meta charset="utf-8"/>
+	  
+	      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+	        <link href='https://fonts.googleapis.com/css?family=Pacifico:300,400,700' rel='stylesheet' type='text/css'>
+	        <link rel="stylesheet" type="text/css" href="/css/index.css">
+	        <link rel="icon" type="image/png" href="public/images/fav.png">
+	       	<!--
+	        <link rel="stylesheet" href="popupS.css">
+	        <script src="popupS.js"></script>
+	        -->
+	</head>
+
+	<body>
+	    <header class="container">
+	  	     <div class="row">
+	  	     	
+	  	     	<div class="col-sm-8">
+	  	     		<h1 class="col-sm-8">3D Printer</h1>
+	  	     	</div>
+	            	
+	            <div class="col-sm-8 text-right">
+	            	<nav>
+	                	<form action="help" method="get">
+      						<input type="submit" id="navHelp" value="Help"></input>
+      					</form>
+	                </nav>
+	            </div>
+	                
+	         </div>
+	 	</header>
+	
+  	<section class="jumbotron">
+      	<div class="container">
+          <div class="row">
+          	<div class="col-sm-8">
+          		<form action="/submit" method="get">
+          		<img type="image" id="docImage" src="images/text-documents.png">
+          		<input type="submit" id="submitButton" value="Submit Gcode"></input>	
+          		</form>
+          	</div>
+          	
+          	<div class="col-sm-8">
+          		<form action="/check" method="get">
+          		<img type="image" id="docImage" src="images/database.png">
+          		<input type="submit" id="checkButton" value="Check Material"></input>	
+          		</form>
+          	</div>
+          </div>
+        </div>
+ 	</section>
+	
+	</body>
+</html>
+

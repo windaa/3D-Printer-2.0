@@ -1,0 +1,150 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+h4 {
+    margin: 0;
+    margin-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    margin-top: 5px;
+}
+
+
+header {
+  padding: 20px 0;
+}
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: #ffffff;
+  height: 600px;
+}
+
+.jumbotron h2 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.jumbotron h3 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: 30px;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: black;
+}
+
+section .row  img {
+  margin: 0 0 30px;
+  width: 100%;
+}
+
+.col-md-6 {
+  margin: 0 0 30px;
+}
+
+/*
+button
+*/
+#submitButton {
+  background-color: white;
+  font-size: 20px;
+  color:black;
+}
+
+#submitButton:hover {
+  background-color: #FFD435;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+#navHelp {
+  background-color: white;
+  color: black;
+}
+
+#navHelp:hover {
+  background-color: white;
+  color:#FFE06F;
+}
+
+
+/*
+form
+*/
+input {
+border: 0px;
+height: 35px;
+width: 400px;
+border-radius: 5px;
+margin-top: 2px;
+}
+
+form{
+font-size: 18px;
+}
+
+input, select, textarea{
+    color: #000000;
+}
+
+a:link, a:visited { 
+    text-decoration: none;
+    color:#000000;
+    cursor: auto;
+}
+
+nav a:hover {
+  color:#f95959;
+}
+
+table,th,tr,td {
+  border: 1px solid black;
+}
+
+tr,th,td {
+    color: black;
+    font-size: 20px;
+    padding: 5px;
+    text-align: left;
+}
+#docImage {
+  width: 150px;
+  height: 150px;
+}
+
+#databaseImage {
+  width: 150px;
+  height: 150px;
+}
+
