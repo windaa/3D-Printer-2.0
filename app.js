@@ -85,24 +85,26 @@ app.post('/upload', function(req, res){
 	if(req.files) {
 		var file = req.files.filename;
 		var filename = file.name;
-		var fileInString;
+		var fileInString
+		var filament; //länge des Materials von Auftrag
+		var filamentWithoutMeter;
+		var filamentWithoutSpace;
+		var filamentNum;
+		var words;
+		var list = [];
 		
-
 		file.mv('./uploads/' + filename);
 
 		fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
 		  if (err) {
 		    return console.log(err);
 		  }
+		  
 		  fileInString = data;
 		 //console.log(fileInString);
 
-		  	var words = fileInString.split(";");
-			var list = [];
-			var filament; //länge des Materials von Auftrag
-			var materialdichte;
-			//console.log(words);
-
+		  	words = fileInString.split(";");
+			
 			for(var i = 0; i < words.length; i++) {
 			    var part = [];
 			    list[i] = words[i];
@@ -110,21 +112,17 @@ app.post('/upload', function(req, res){
 			 	if(part[0] == "Filament used") {
 			        filament = part[1];
 			    }
-			    //else if(part[0] == "Layer height") {
-			    //    materialdichte = part[1];
-			    //}
+			    
 			}
 
 			console.log(filament);
 
-			var filamentWithoutMeter = filament.replace("m","");
-			var filamentWithoutSpace = filamentWithoutMeter.trim();
-
-			//var materialdichteWithoutSpace = materialdichte.trim();
-
-			var filamentNum = parseFloat(filamentWithoutSpace);
-			//var materialdichteNum = parseFloat(materialdichteWithoutSpace);
-
+			
+			 filamentWithoutMeter = filament.replace("m","");
+			 filamentWithoutSpace = filamentWithoutMeter.trim();
+		
+			 filamentNum = parseFloat(filamentWithoutSpace);
+			
 			var mi = req.body.MatID;
 			console.log(JSON.stringify(mi));
 
@@ -133,7 +131,6 @@ app.post('/upload', function(req, res){
 		    console.log(filamentNum);
 		    console.log(data.filamentWeight);
 		   		if(filamentNum > data.filamentWeight){
-		   			
 		   			console.log("unavailable");
 		   			res.render('uploadInfo.ejs',
 					{ 
@@ -141,12 +138,10 @@ app.post('/upload', function(req, res){
 					filament: filamentWithoutSpace,
 					available : "Material is not available"
 					});
-
 			   		} 
 			   		else 
 			   		{
-		 
-		   			console.log("available");
+					console.log("available");
 		   			res.render('uploadInfo.ejs',
 					{ 
 					filename: filename,
@@ -155,38 +150,8 @@ app.post('/upload', function(req, res){
 					});
 		   		}
 		  	});
-			
-			/**
-			if(vorhanden === true)
-			{
-				res.render('uploadInfo.ejs',
-				{ 
-				filename: filename,
-				filament: filamentWithoutSpace,
-				available : "Material is available"
-				});
-
-			} else{
-				res.render('uploadInfo.ejs',
-				{ 
-				filename: filename,
-				filament: filamentWithoutSpace,
-				available : "Material is not available"
-				});
-			}
-			**/
-
-			
-
-
-
 		});
 
-
-	 	
-
-		
-		
 		// Alternative 1
 		/** 
 		const data = document.getElementById('pushData');
@@ -233,12 +198,4 @@ app.post('/upload', function(req, res){
 		});
 		**/
 	}
-	else
-	{
-		res.send("error");
-
-	}
-
-	
-
 });
