@@ -13,6 +13,8 @@ var Client = require('node-rest-client').Client;
 var client = new Client();
 // var args;
 
+var vorhanden;
+
 //connect to mongoose
 var uri = 'mongodb://3DP_INF:3dpinf@ds163701.mlab.com:63701/3dp_inf';
 mongoose.Promise = global.Promise;
@@ -93,13 +95,13 @@ app.post('/upload', function(req, res){
 		    return console.log(err);
 		  }
 		  fileInString = data;
-		  console.log(fileInString);
+		 //console.log(fileInString);
 
 		  	var words = fileInString.split(";");
 			var list = [];
-			var filament;
+			var filament; //länge des Materials von Auftrag
 			var materialdichte;
-			console.log(words);
+			//console.log(words);
 
 			for(var i = 0; i < words.length; i++) {
 			    var part = [];
@@ -108,9 +110,9 @@ app.post('/upload', function(req, res){
 			 	if(part[0] == "Filament used") {
 			        filament = part[1];
 			    }
-			    else if(part[0] == "Layer height") {
-			        materialdichte = part[1];
-			    }
+			    //else if(part[0] == "Layer height") {
+			    //    materialdichte = part[1];
+			    //}
 			}
 
 			console.log(filament);
@@ -118,18 +120,68 @@ app.post('/upload', function(req, res){
 			var filamentWithoutMeter = filament.replace("m","");
 			var filamentWithoutSpace = filamentWithoutMeter.trim();
 
-			var materialdichteWithoutSpace = materialdichte.trim();
+			//var materialdichteWithoutSpace = materialdichte.trim();
 
 			var filamentNum = parseFloat(filamentWithoutSpace);
-			var materialdichteNum = parseFloat(materialdichteWithoutSpace);
+			//var materialdichteNum = parseFloat(materialdichteWithoutSpace);
 
-			res.render('uploadInfo.ejs',
-			{ 
+			var mi = req.body.MatID;
+			console.log(JSON.stringify(mi));
+
+			db.collection("current_material").findOne({materialID:mi},function(err, data) {
+		    if (err) throw err;
+		    console.log(filamentNum);
+		    console.log(data.filamentWeight);
+		   		if(filamentNum > data.filamentWeight){
+		   			
+		   			console.log("unavailable");
+		   			res.render('uploadInfo.ejs',
+					{ 
+					filename: filename,
+					filament: filamentWithoutSpace,
+					available : "Material is not available"
+					});
+
+			   		} 
+			   		else 
+			   		{
+		 
+		   			console.log("available");
+		   			res.render('uploadInfo.ejs',
+					{ 
+					filename: filename,
+					filament: filamentWithoutSpace,
+					available : "Material is available"
+					});
+		   		}
+		  	});
+			
+			/**
+			if(vorhanden === true)
+			{
+				res.render('uploadInfo.ejs',
+				{ 
 				filename: filename,
-				filament: filamentWithoutSpace
-			});
+				filament: filamentWithoutSpace,
+				available : "Material is available"
+				});
+
+			} else{
+				res.render('uploadInfo.ejs',
+				{ 
+				filename: filename,
+				filament: filamentWithoutSpace,
+				available : "Material is not available"
+				});
+			}
+			**/
+
+			
+
+
 
 		});
+
 
 	 	
 
@@ -180,6 +232,11 @@ app.post('/upload', function(req, res){
     	console.log(req.files);
 		});
 		**/
+	}
+	else
+	{
+		res.send("error");
+
 	}
 
 	

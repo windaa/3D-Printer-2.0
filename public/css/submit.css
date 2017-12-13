@@ -60,7 +60,8 @@ header p {
 }
 
 .jumbotron p {
-  font-size: 15px;
+  font-size: 18px;
+  color: black;
 }
 
 section .row  img {
@@ -127,4 +128,8 @@ nav a:hover {
   color:#f95959;
 }
 
+#inputText{
+    border: 1px solid black;
+    border-radius: 2px;
+}
 
