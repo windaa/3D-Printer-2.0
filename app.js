@@ -92,16 +92,21 @@ app.post('/upload', function(req, res){
 		var filamentNum;
 		var words;
 		var list = [];
+		var volume;
+		var weight;
+		var mi;
+
+
 		
 		file.mv('./uploads/' + filename);
 
-		fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
-		  if (err) {
-		    return console.log(err);
-		  }
-		  
-		  fileInString = data;
-		 //console.log(fileInString);
+			fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
+			  if (err) {
+			    return console.log(err);
+			  }
+			  
+			 fileInString = data;
+			 //console.log(fileInString);
 
 		  	words = fileInString.split(";");
 			
@@ -122,31 +127,64 @@ app.post('/upload', function(req, res){
 			 filamentWithoutSpace = filamentWithoutMeter.trim();
 		
 			 filamentNum = parseFloat(filamentWithoutSpace);
+
+
 			
-			var mi = req.body.MatID;
+			mi = req.body.MatID;
 			console.log(JSON.stringify(mi));
 
 			db.collection("current_material").findOne({materialID:mi},function(err, data) {
 		    if (err) throw err;
 		    console.log(filamentNum);
 		    console.log(data.filamentWeight);
-		   		if(filamentNum > data.filamentWeight){
+
+		    volume = filamentNum * 3.14 * (data.DuchmesserFilament / 2) * (data.DuchmesserFilament / 2);
+		    console.log(volume);
+		    weight = volume * data.MaterialDichte
+		    console.log(weight);
+
+
+		   		if(weight > data.filamentWeight){
 		   			console.log("unavailable");
 		   			res.render('uploadInfo.ejs',
 					{ 
 					filename: filename,
-					filament: filamentWithoutSpace,
+					lengthEjs: filamentWithoutSpace,
+					weightEjs: weight,
 					available : "Material is not available"
 					});
 			   		} 
 			   		else 
 			   		{
 					console.log("available");
+					var myobj = { materialID: mi, lange: filamentWithoutSpace, filamentWeight: weight };
+					
+					// Insert to request_material
+					db.collection("request_material").insertOne(myobj, function(err, res) {
+					    if (err) throw err;
+					    console.log("1 document inserted");
+					 });
+
+					// Update
+					var newWeight = (data.filamentWeight - weight);
+					var myQuery = { materialID: mi };
+					var newValues = { $set: {filamentWeight:newWeight}};
+
+					db.collection("current_material").updateOne(myQuery, newValues, function(err, res) {
+					    if (err) throw err;
+					    console.log("1 document updated");
+					 }); 
+
+					
+
+					// Render
 		   			res.render('uploadInfo.ejs',
 					{ 
 					filename: filename,
-					filament: filamentWithoutSpace,
+					lengthEjs: filamentWithoutSpace,
+					weightEjs: weight,
 					available : "Material is available"
+
 					});
 		   		}
 		  	});
