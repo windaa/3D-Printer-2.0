@@ -85,7 +85,7 @@ app.post('/upload', function(req, res){
 	if(req.files) {
 		var file = req.files.filename;
 		var filename = file.name;
-		var fileInString
+		var fileInString;
 		var filament; //länge des Materials von Auftrag
 		var filamentWithoutMeter;
 		var filamentWithoutSpace;
@@ -100,26 +100,24 @@ app.post('/upload', function(req, res){
 		
 		file.mv('./uploads/' + filename);
 
-<<<<<<< HEAD
+
 		fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
-		  if (err) {
-		    return console.log(err);
-		  }
+			if (err) {
+			  return console.log(err);
+			}
 		  
 		  	fileInString = data;
 		
 			words = fileInString.split(";");
-=======
 			fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
-			  if (err) {
-			    return console.log(err);
-			  }
+				  if (err) {
+				    return console.log(err);
+				  }
 			  
-			 fileInString = data;
+			fileInString = data;
 			 //console.log(fileInString);
 
 		  	words = fileInString.split(";");
->>>>>>> c128d3acd009e3afc09e75ec7776aa6e8fb5ab67
 			
 			for(var i = 0; i < words.length; i++) {
 			    var part = [];
@@ -128,25 +126,20 @@ app.post('/upload', function(req, res){
 			 	if(part[0] == "Filament used") {
 			        filament = part[1];
 			    }
-			    
 			}
 
 			console.log(filament);
 
-<<<<<<< HEAD
 			filamentWithoutMeter = filament.replace("m","");
 			filamentWithoutSpace = filamentWithoutMeter.trim();
 			filamentNum = parseFloat(filamentWithoutSpace);
-=======
 			
-			 filamentWithoutMeter = filament.replace("m","");
-			 filamentWithoutSpace = filamentWithoutMeter.trim();
+			filamentWithoutMeter = filament.replace("m","");
+			filamentWithoutSpace = filamentWithoutMeter.trim();
 		
-			 filamentNum = parseFloat(filamentWithoutSpace);
+			filamentNum = parseFloat(filamentWithoutSpace);
 
 
->>>>>>> c128d3acd009e3afc09e75ec7776aa6e8fb5ab67
-			
 			mi = req.body.MatID;
 			console.log(JSON.stringify(mi));
 
@@ -252,5 +245,6 @@ app.post('/upload', function(req, res){
     	console.log(req.files);
 		});
 		**/
+	});
 	}
 });
