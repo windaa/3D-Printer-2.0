@@ -109,10 +109,10 @@ app.post('/upload', function(req, res){
 		  	fileInString = data;
 		
 			words = fileInString.split(";");
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
+
+
+
 			fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
 				  if (err) {
 				    return console.log(err);
@@ -122,10 +122,7 @@ app.post('/upload', function(req, res){
 			 //console.log(fileInString);
 
 		  	words = fileInString.split(";");
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 			
 			for(var i = 0; i < words.length; i++) {
 			    var part = [];
@@ -138,17 +135,16 @@ app.post('/upload', function(req, res){
 
 			console.log(filament);
 
-<<<<<<< HEAD
+
 
 			filamentWithoutMeter = filament.replace("m","");
 			filamentWithoutSpace = filamentWithoutMeter.trim();
 			filamentNum = parseFloat(filamentWithoutSpace);
 
-=======
+
 			filamentWithoutMeter = filament.replace("m","");
 			filamentWithoutSpace = filamentWithoutMeter.trim();
 			filamentNum = parseFloat(filamentWithoutSpace);
->>>>>>> origin/master
 			
 			filamentWithoutMeter = filament.replace("m","");
 			filamentWithoutSpace = filamentWithoutMeter.trim();
@@ -156,11 +152,6 @@ app.post('/upload', function(req, res){
 			filamentNum = parseFloat(filamentWithoutSpace);
 
 
-<<<<<<< HEAD
-
-			
-=======
->>>>>>> origin/master
 			mi = req.body.MatID;
 			console.log(JSON.stringify(mi));
 

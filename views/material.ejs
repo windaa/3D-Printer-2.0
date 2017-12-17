@@ -18,7 +18,16 @@
 	  	     	<div class="col-sm-8">
 	  	     		<h1 class="col-sm-8">3D Printer</h1>
 	  	     	</div>
-	            	
+
+	  	     	<div class="col-sm-8 text-right">
+	  	     		<img type="image" id="logoImage" src="images/logo_inf.png">
+	  	     	</div>	
+
+	  	     	<div class="col-sm-4 ">
+	  	     		<img type="image" id="hsImage" src="images/hs_logo.png">
+	  	     	</div>
+	           
+	           <!-- 	
 	            <div class="col-sm-8 text-right">
 	            	<nav>
 	                	<form action="help" method="get">
@@ -26,21 +35,25 @@
       					</form>
 	                </nav>
 	            </div>
-	                
+	            -->
+
 	         </div>
 	 	</header>
 	
   	<section class="jumbotron">
       	<div class="container">
           <div class="row">
-          	<div class="col-sm-8">
-          	
-			 	<table>
+          	<div class="col-sm-12">
+          			<h1> Materials </h1>
+          	</div>
+          	<div class="col-sm-12">
+          		
+			 	<table class="table">
 			 		<tr>
 			 			<th><p>Material ID</p></th>
 					    <th><p>Material Name</p></th>
 					    <th><p>Material Color</p></th>
-					    <th><p>Filament Weight</p></th>
+					    <th><p>Filament Weight (g)</p></th>
 			 		</tr>
 					<tr>
 					   	<% for(var i=0; i < datas.length; i++) { %>

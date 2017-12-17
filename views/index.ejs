@@ -6,8 +6,8 @@
 	        <meta charset="utf-8"/>
 	  
 	      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-	        <link href='https://fonts.googleapis.com/css?family=Pacifico:300,400,700' rel='stylesheet' type='text/css'>
+	        <link href='https://fonts.googleapis.com/css?family=Roboto:350,450,750' rel='stylesheet' type='text/css'>
+	        <link href='https://fonts.googleapis.com/css?family=Pacifico:350,450,750' rel='stylesheet' type='text/css'>
 	        <link rel="stylesheet" type="text/css" href="/css/index.css">
 	        <link rel="icon" type="image/png" href="public/images/fav.png">
 	       	<!--
@@ -23,34 +23,55 @@
 	  	     	<div class="col-sm-8">
 	  	     		<h1 class="col-sm-8">3D Printer</h1>
 	  	     	</div>
-	            	
+
 	            <div class="col-sm-8 text-right">
+	  	     		<img type="image" id="logoImage" src="images/logo_inf.png">
+	  	     	</div>	
+
+	  	     	<div class="col-sm-4 ">
+	  	     		<img type="image" id="hsImage" src="images/hs_logo.png">
+	  	     	</div>
+
+	           
+	           <!-- <div class="col-sm-8 text-right">
 	            	<nav>
 	                	<form action="help" method="get">
       						<input type="submit" id="navHelp" value="Help"></input>
       					</form>
 	                </nav>
 	            </div>
-	                
+	            -->
+
 	         </div>
 	 	</header>
 	
   	<section class="jumbotron">
       	<div class="container">
           <div class="row">
-          	<div class="col-sm-8">
+          	<div class="col-sm-4">
           		<form action="/submit" method="get">
           		<img type="image" id="docImage" src="images/text-documents.png">
           		<input type="submit" id="submitButton" value="Submit Gcode"></input>	
           		</form>
+          		<form action="/check" method="get">
+          		<img type="image" id="docImage" src="images/database.png">
+          		<input type="submit" id="checkButton" value="Check Material"></input>	
+          		</form>
           	</div>
           	
+          	<!--
           	<div class="col-sm-8">
           		<form action="/check" method="get">
           		<img type="image" id="docImage" src="images/database.png">
           		<input type="submit" id="checkButton" value="Check Material"></input>	
           		</form>
           	</div>
+
+          		 <img type="image" id="printImage" src="images/3dpBlack.png"> -->
+          	<div class="col-sm-8 text-right">
+          		<h2>now you can <br> <span style="font-family:'Pacifico';color:black">Create</span> <br>your own product</h2>
+          	</div>
+      		
           </div>
         </div>
  	</section>

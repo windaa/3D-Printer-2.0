@@ -23,7 +23,8 @@ footer .row {
 
 header h1 {
   font-weight: 700;
-  margin: 0;
+  font-size: 50px;
+  margin: 20;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -40,15 +41,16 @@ header p {
 .jumbotron {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: #FDF189;
   color: #ffffff;
   height: 600px;
 }
 
 .jumbotron h2 {
   font-size: 60px;
+  font-family: Roboto;
   font-weight: 700;
-  margin: 0;
+  margin-left: -100;
   color: #fff;
 }
 
@@ -75,15 +77,17 @@ section .row  img {
 button
 */
 #submitButton {
-  background-color: white;
-  font-size: 20px;
+  background-color: #FDF189;
+  font-size: 23px;
   color:black;
+  font-weight: bold;
 }
 
 #checkButton {
-  background-color: white;
-  font-size: 20px;
+  background-color: #FDF189;
+  font-size: 23px;
   color:black;
+  font-weight: bold;
 }
 
 #navHelp {
@@ -126,6 +130,18 @@ nav a:hover {
     color:#f95959;
 }
 
+#logoImage {
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#hsImage {
+    width: 210px;
+    height: 75px;
+    margin-top: 15px;
+}
+
 #docImage {
     width: 100px;
     height: 100px;
@@ -138,3 +154,9 @@ nav a:hover {
     margin-left: 0px;
 }
 
+#printImage{
+    width: 250px;
+    height: 250px;
+    margin-left: 140px;
+    margin-top: -150px;
+}
