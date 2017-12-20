@@ -160,3 +160,11 @@ nav a:hover {
     margin-left: 140px;
     margin-top: -150px;
 }
+#title {
+    font-size: 50px;
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    height: 60px;
+    background: white;
+}

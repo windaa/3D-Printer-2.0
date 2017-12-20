@@ -151,3 +151,11 @@ nav a:hover {
     height: 100px;
     margin-left: 0px;
 }
+#title {
+    font-size: 50px;
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    height: 60px;
+    background: white;
+}

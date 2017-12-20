@@ -43,6 +43,11 @@ app.get('/submit', function(req, res){
 	res.render('submit.ejs');
 });
 
+// go to home
+app.get('/index', function(req, res, next){
+	res.render('index.ejs', { meldung: ''});
+});
+
 
 app.get('/check', function(req, res){
 
@@ -76,11 +81,12 @@ app.get('/check', function(req, res){
 	**/
 });
 
+
 app.get('/help', function(req, res){
 	res.render('help.ejs');
 });
 
-app.post('/upload', function(req, res){
+app.post('/upload', function(req, res) { 
 	
 	if(req.files) {
 		var file = req.files.filename;
@@ -96,24 +102,9 @@ app.post('/upload', function(req, res){
 		var weight;
 		var mi;
 
-
-		
 		file.mv('./uploads/' + filename);
 
-
 		fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
-			if (err) {
-			  return console.log(err);
-			}
-		  
-		  	fileInString = data;
-		
-			words = fileInString.split(";");
-
-
-
-
-			fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
 				  if (err) {
 				    return console.log(err);
 				  }
@@ -257,6 +248,7 @@ app.post('/upload', function(req, res){
     	console.log(req.files);
 		});
 		**/
-	});
+		
 	}
-});
+	});
+
