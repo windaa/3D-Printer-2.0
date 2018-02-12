@@ -8,15 +8,18 @@
   },
   "dependencies": {
     "body-parser": "*",
+    "config": "^1.29.4",
     "ejs": "*",
     "express": "*",
     "express-fileupload": "*",
+    "form-data": "^2.3.1",
     "fs": "0.0.1-security",
     "mongoose": "*",
     "node-rest-client": "^3.1.0",
     "odoo": "^0.4.0",
     "odoo-xmlrpc": "^1.0.6",
     "popups": "^1.1.3",
+    "request": "^2.83.0",
     "restler": "^3.4.0"
   },
   "author": "Winda Anggraeni",

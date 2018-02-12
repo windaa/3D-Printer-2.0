@@ -1,87 +1,57 @@
-<!DOCTYPE html>
-<html>
+        <!DOCTYPE html>
+        <html lang="en">
 
-	<head>
-	    <title>3D Printer</title>
-	        <meta charset="utf-8"/>
-	  
-	      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	        <link href='https://fonts.googleapis.com/css?family=Roboto:350,450,750' rel='stylesheet' type='text/css'>
-	        <link href='https://fonts.googleapis.com/css?family=Pacifico:350,450,750' rel='stylesheet' type='text/css'>
-	        <link rel="stylesheet" type="text/css" href="/css/index.css">
-	        <link rel="icon" type="image/png" href="public/images/fav.png">
-	       	<!--
-	        <link rel="stylesheet" href="popupS.css">
-	        <script src="popupS.js"></script>
-	        -->
-	</head>
+        <head>
 
-	<body>
-	    <header class="container">
-	  	     <div class="row">
-	  	     	
-	  	     	<div class="col-sm-8">
-	  	     		<form action="index" method="get">
-      				<input type="submit" id="title" value="3D Printer"></input>
-      				</form>
-	  	     	</div>
+        	<meta charset="utf-8">
+        	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        	<meta name="description" content="">
+        	<meta name="author" content="">
 
-	            <div class="col-sm-8 text-right">
-	            	<a href="https://www.inf.reutlingen-university.de/home/">
-	  	     		<img type="image" id="logoImage" src="images/logo_inf.png">
-	  	     		</a>
-	  	     	</div>	
+        	<title>3DP-INF</title>
 
-	  	     	<div class="col-sm-4 ">
-	  	     		<a href="https://www.reutlingen-university.de/home/">
-	  	     		<img type="image" id="hsImage" src="images/hs_logo.png">
-	  	     		</a>
-	  	     	</div>
+        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.bundle.min.js"></script>
+        	<link rel="icon" type="image/png" href="public/images/fav.png">
 
-	           
-	           <!-- <div class="col-sm-8 text-right">
-	            	<nav>
-	                	<form action="help" method="get">
-      						<input type="submit" id="navHelp" value="Help"></input>
-      					</form>
-	                </nav>
-	            </div>
-	            -->
+        	<style>
+        		body {
+        			padding-top: 54px;
+        		}
+        		@media (min-width: 992px) {
+        			body {
+        				padding-top: 56px;
+        			}
+        		}
 
-	         </div>
-	 	</header>
-	
-  	<section class="jumbotron">
-      	<div class="container">
-          <div class="row">
-          	<div class="col-sm-4">
-          		<form action="/submit" method="get">
-          		<img type="image" id="docImage" src="images/text-documents.png">
-          		<input type="submit" id="submitButton" value="Submit Gcode"></input>	
-          		</form>
-          		<form action="/check" method="get">
-          		<img type="image" id="docImage" src="images/database.png">
-          		<input type="submit" id="checkButton" value="Check Material"></input>	
-          		</form>
-          	</div>
-          	
-          	<!--
-          	<div class="col-sm-8">
-          		<form action="/check" method="get">
-          		<img type="image" id="docImage" src="images/database.png">
-          		<input type="submit" id="checkButton" value="Check Material"></input>	
-          		</form>
-          	</div>
+        	</style>
+        </head>
 
-          		 <img type="image" id="printImage" src="images/3dpBlack.png"> -->
-          	<div class="col-sm-8 text-right">
-          		<h2>here you can <br> <span style="font-family:'Pacifico';color:black">Create</span> <br>your own product</h2>
-          	</div>
-      		
-          </div>
-        </div>
- 	</section>
-	
-	</body>
-</html>
+        <body>
+        	<!-- Page Content -->
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-lg-12 text-left">
+        				<h1 class="mt-5">Dashboard</h1>
+        			</div>
+        		</div>
+        		<div class="row">
+        			<div class="col-lg-12 text-left">
+        				<form class="btn-group " action="/check" method="GET">
+        					<button class="btn btn-primary">check material</button>
+        					<input type="hidden" class="btn"><!-- fake sibling to right -->
+        				</form>
 
+        				<form class="btn-group" action="/file" method="GET">
+        					<input type="hidden" class="btn"><!-- fake sibling to left -->
+        					<button class="btn btn-primary">submit gcode</button>
+        				</form>
+        			</div>
+        		</div>
+        	</div>
+        </body>
+
+        </html>
