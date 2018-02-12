@@ -51,14 +51,6 @@
 		app.listen(3000);
 		console.log('Running on port 3000...');
 
-		// global variable
-		var embedDataTable = new Array();
-		var embedFilename = "";
-		var embedLength = "";
-		var embedWeight = "";
-		var embedStatus = "";
-
-
 		// update material Odoo --> Mongodb
 		var matNameOdoo;
 		var weightOdoo;
@@ -111,8 +103,8 @@
 		
 		app.get('/check', function(req, res){
 			db.collection("current_material").find({}).toArray(function(err, data) {
-			if (err) throw err;
-			res.render('material.ejs', {datas:data});
+				if (err) throw err;
+				res.render('material.ejs', {datas:data});
 			});			
 		});
 
@@ -131,7 +123,9 @@
 			});	
 		});
 		**/
+		
 
+		
 		app.post('/upload', function(req, res) { 
 			
 			if(req.files) {
@@ -153,15 +147,15 @@
 				file.mv('./uploads/' + filename);
 
 				fs.readFile('./uploads/' + filename, 'utf8', function (err,data) {
+					
 					if (err) {
 						return console.log(err);
 					}
 
+					// Read gcode
 					fileInString = data;
-
 					words = fileInString.split(";");
 
-					
 					for(var i = 0; i < words.length; i++) {
 						var part = [];
 						list[i] = words[i];
@@ -171,7 +165,7 @@
 						}
 					}
 
-					console.log(filament);
+					// console.log(filament);
 					
 					filamentWithoutMeter = filament.replace("m","");
 					filamentWithoutSpace = filamentWithoutMeter.trim();
@@ -187,17 +181,12 @@
 
 					filamentNum = parseFloat(filamentWithoutSpace);
 
-
-					// Embed Variable
-					embedFilename = filename;
-					embedLength = filamentWithoutSpace;
-					embedWeight = weight;
-
-
+					// Read material ID
 					mi = req.body.MatID;
 					console.log(JSON.stringify(mi));
 
-					db.collection("current_material").findOne({materialID:mi},function(err, data) {
+						// Find data in database based on material ID
+						db.collection("current_material").findOne({materialID:mi},function(err, data) {
 						if (err) throw err;
 						console.log(filamentNum);
 						console.log(data.filamentWeight);
@@ -210,15 +199,14 @@
 
 						if(weight > data.filamentWeight)
 						{
-							embedStatus = "Material is not available"
-
+						
 							console.log("unavailable");
 							res.render('status.ejs',
 							{ 
-								filename: embedFilename,
-								lengthEjs: embedLength,
-								weightEjs: embedWeight,
-								available : embedStatus
+								filename: filename,
+								lengthEjs: filamentWithoutSpace,
+								weightEjs: weight,
+								available : "Material is not available"
 							});
 						} 
 						else 
@@ -226,8 +214,6 @@
 
 						   			// upload gcode file to octoprint
 						   			// unwrappeduploadToOctoprint(filename);
-
-						   			embedStatus = "Material is available";
 
 						   			console.log("available");
 						   			var myobj = { materialID: mi, lange: embedLength, filamentWeight: embedWeight };
@@ -254,13 +240,13 @@
 									// render
 									res.render('status.ejs',
 									{ 
-										filename: embedFilename,
-										lengthEjs: embedLength,
-										weightEjs: embedWeight,
-										available : embedStatus
+										filename: filename,
+										lengthEjs: filamentWithoutSpace,
+										weightEjs: weight,
+										available : "Material is available"
 									});
 								}
-							});
+						});
 				});
 
 							// update Odoo
@@ -302,9 +288,11 @@
 							    	console.log('Result: ', products);
 							    });
 							});
+							
 
 						}
 					});
+		
 
 		unwrappeduploadToOctoprint = function(x){
 			FormData = require('form-data'),
